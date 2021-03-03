@@ -1,7 +1,7 @@
 import 'package:bug_tracker/screens/main_screen.dart';
 import 'package:bug_tracker/services/auth.dart';
 import 'package:flutter/material.dart';
-import './sign_in_page.dart';
+import 'sign_in/sign_in_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User>(
+    return StreamBuilder<User?>(
         stream: context.read<Auth>().authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {

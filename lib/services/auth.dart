@@ -5,16 +5,16 @@ import 'package:google_sign_in/google_sign_in.dart';
 class Auth with ChangeNotifier {
   final _firebaseAuth = FirebaseAuth.instance;
 
-  User get currentUser => _firebaseAuth.currentUser;
+  User? get currentUser => _firebaseAuth.currentUser;
 
-  Stream<User> authStateChanges() => _firebaseAuth.authStateChanges();
+  Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
 
-  Future<User> signIngAnonymousely() async {
+  Future<User?> signIngAnonymousely() async {
     final credentials = await _firebaseAuth.signInAnonymously();
     return credentials.user;
   }
 
-  Future<User> signInWithGoogle() async {
+  Future<User?> signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final googleUser = await googleSignIn.signIn();
     if (googleUser != null) {
