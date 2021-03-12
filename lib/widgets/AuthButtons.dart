@@ -14,6 +14,8 @@ abstract class CustomRaisedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
+      
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
       onPressed: onPressed as void Function()?,
@@ -34,11 +36,10 @@ class OnlyTextButton extends CustomRaisedButton {
       Color textColor = Colors.black,
       required String text,
       required Function onPressed})
-      : assert(text != null),
-        super(
+      : super(
           child: Text(
             text,
-            style: TextStyle(color: textColor),
+            style: TextStyle(color: textColor, fontSize: 25),
           ),
           color: color,
           onPressed: onPressed,
@@ -47,21 +48,22 @@ class OnlyTextButton extends CustomRaisedButton {
 
 class ImageButton extends CustomRaisedButton {
   ImageButton({
-    required Image image,
+    required Widget image,
     required String text,
     Color textColor = Colors.black,
     required Function onPressed,
     required Color color,
-  })  : assert(image != null),
-        assert(text != null),
-        super(
+  }) : super(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               image,
               Text(
                 text,
-                style: TextStyle(color: textColor),
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 25,
+                ),
               ),
               Opacity(opacity: 0, child: image),
             ],

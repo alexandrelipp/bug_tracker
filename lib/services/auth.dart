@@ -85,8 +85,8 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> signOut() async {
-    final google = GoogleSignIn();
-    await google.signOut();
+    // final google = GoogleSignIn();
+    // await google.signOut();
     await _firebaseAuth.signOut();
   }
 }
